@@ -11,6 +11,7 @@ package controlador;
 import modelo.Cancha;
 import modelo.CanchaDAO;
 import vista.VistaCancha;
+import java.util.List;
 
 public class ControladorCancha {
 
@@ -30,23 +31,23 @@ public class ControladorCancha {
                 case 1:
                     registrarNuevaCancha();
                     break;
-
                 case 2:
+                    mostrarCanchas();
+                    break;
+                case 3:
                     editarCancha();
                     break;
-
-                case 3:
+                case 4:
                     eliminarCancha();
                     break;
-
-                case 4:
+                case 5:
                     vista.mostrarMensaje("Saliendo del sistema...");
                     break;
 
                 default:
                     vista.mostrarMensaje("Opción inválida");
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
     }
 
     public void registrarNuevaCancha() {
@@ -67,9 +68,16 @@ public class ControladorCancha {
         }
     }
 
-    public void editarCancha() {
-        vista.mostrarMensaje("--- ACTUALIZAR DATOS DE CANCHA ---");
+    public void mostrarCanchas() {
+        List<Cancha> lista = modeloDAO.obtenerCanchas();
 
+        vista.mostrarCanchas(lista);
+    }
+
+    public void editarCancha() {
+        mostrarCanchas();
+        vista.mostrarMensaje("--- ACTUALIZAR DATOS DE CANCHA ---");
+        
         int id = vista.pedirId();
         String nombre = vista.pedirNombre();
         String deporte = vista.pedirDeporte();
@@ -87,8 +95,9 @@ public class ControladorCancha {
     }
 
     public void eliminarCancha() {
+        mostrarCanchas();
         vista.mostrarMensaje("--- ELIMINAR CANCHA ---");
-
+      
         int id = vista.pedirId();
 
         boolean exito = modeloDAO.eliminarCancha(id);

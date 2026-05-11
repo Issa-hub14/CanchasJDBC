@@ -13,8 +13,16 @@ public class Cancha {
     private String nombre;
     private String deporte;
     private int capacidad;
+    private int id;
 
     public Cancha(String nombre, String deporte, int capacidad) {
+        this.nombre = nombre;
+        this.deporte = deporte;
+        this.capacidad = capacidad;
+    }
+
+    public Cancha(int id, String nombre, String deporte, int capacidad) {
+        this.id = id;
         this.nombre = nombre;
         this.deporte = deporte;
         this.capacidad = capacidad;
@@ -30,5 +38,9 @@ public class Cancha {
 
     public int getCapacidad() {
         return capacidad;
+    }
+
+    public int getId() {
+        return id;
     }
 }

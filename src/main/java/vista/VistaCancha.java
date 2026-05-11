@@ -5,6 +5,8 @@
 package vista;
 
 import java.util.Scanner;
+import java.util.List;
+import modelo.Cancha;
 
 /**
  *
@@ -21,9 +23,10 @@ public class VistaCancha {
     public int mostrarMenu() {
         System.out.println("\n--- MENU PRINCIPAL ---");
         System.out.println("1. Registrar nueva cancha");
-        System.out.println("2. Actualizar cancha existente");
-        System.out.println("3. Eliminar cancha existente");
-        System.out.println("4. Salir");
+        System.out.println("2. Mostar canchas registradas");
+        System.out.println("3. Actualizar cancha existente");
+        System.out.println("4. Eliminar cancha existente");
+        System.out.println("5. Salir");
 
         System.out.print("Seleccione una opcion: ");
         return Integer.parseInt(scanner.nextLine());
@@ -51,5 +54,21 @@ public class VistaCancha {
 
     public void mostrarMensaje(String mensaje) {
         System.out.println(">>> " + mensaje);
+    }
+
+    public void mostrarCanchas(List<Cancha> lista) {
+        System.out.println("\n--- LISTA DE CANCHAS ---");
+        if (lista.isEmpty()) {
+            System.out.println("No hay canchas registradas.");
+        } else {
+            for (Cancha c : lista) {
+                System.out.println(
+                        "ID: " + c.getId()
+                        + " | Nombre: " + c.getNombre()
+                        + " | Deporte: " + c.getDeporte()
+                        + " | Capacidad: " + c.getCapacidad()
+                );
+            }
+        }
     }
 }
