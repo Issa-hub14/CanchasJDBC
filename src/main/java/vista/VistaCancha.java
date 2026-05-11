@@ -33,6 +33,11 @@ public class VistaCancha {
         return Integer.parseInt(scanner.nextLine());
     }
 
+    public int pedirId() {
+        System.out.print("Ingrese el ID de la cancha: ");
+        return scanner.nextInt();
+    }
+
     public void mostrarMensaje(String mensaje) {
         System.out.println(">>> " + mensaje);
     }

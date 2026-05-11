@@ -39,5 +39,38 @@ public class ControladorCancha {
             vista.mostrarMensaje("Ocurrió un error al intentar registrar la cancha.");
         }
     }
+    
+    public void editarCancha() {
+        vista.mostrarMensaje("--- ACTUALIZAR DATOS DE CANCHA ---");
+
+        int id = vista.pedirId();
+        String nombre = vista.pedirNombre();
+        String deporte = vista.pedirDeporte();
+        int capacidad = vista.pedirCapacidad();
+
+        Cancha canchaActualizada = new Cancha(nombre, deporte, capacidad);
+
+        boolean exito = modeloDAO.editarCancha(id, canchaActualizada);
+
+        if (exito) {
+            vista.mostrarMensaje("¡La cancha ha sido actualizada exitosamente en MySQL!");
+        } else {
+            vista.mostrarMensaje("Ocurrió un error al intentar actualizar la cancha.");
+        }
+    }
+    
+    public void eliminarCancha() {
+        vista.mostrarMensaje("--- ELIMINAR CANCHA ---");
+
+        int id = vista.pedirId();
+        
+        boolean exito = modeloDAO.eliminarCancha(id);
+
+        if (exito) {
+            vista.mostrarMensaje("¡La cancha ha sido eliminada exitosamente en MySQL!");
+        } else {
+            vista.mostrarMensaje("Ocurrió un error al intentar eliminar la cancha.");
+        }
+    }
 
 }
