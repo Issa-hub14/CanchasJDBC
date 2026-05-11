@@ -22,6 +22,33 @@ public class ControladorCancha {
         this.modeloDAO = modeloDAO;
     }
 
+    public void iniciar() {
+        int opcion;
+        do {
+            opcion = vista.mostrarMenu();
+            switch (opcion) {
+                case 1:
+                    registrarNuevaCancha();
+                    break;
+
+                case 2:
+                    editarCancha();
+                    break;
+
+                case 3:
+                    eliminarCancha();
+                    break;
+
+                case 4:
+                    vista.mostrarMensaje("Saliendo del sistema...");
+                    break;
+
+                default:
+                    vista.mostrarMensaje("Opción inválida");
+            }
+        } while (opcion != 4);
+    }
+
     public void registrarNuevaCancha() {
         vista.mostrarMensaje("--- REGISTRO DE NUEVA CANCHA ---");
 
@@ -39,7 +66,7 @@ public class ControladorCancha {
             vista.mostrarMensaje("Ocurrió un error al intentar registrar la cancha.");
         }
     }
-    
+
     public void editarCancha() {
         vista.mostrarMensaje("--- ACTUALIZAR DATOS DE CANCHA ---");
 
@@ -58,12 +85,12 @@ public class ControladorCancha {
             vista.mostrarMensaje("Ocurrió un error al intentar actualizar la cancha.");
         }
     }
-    
+
     public void eliminarCancha() {
         vista.mostrarMensaje("--- ELIMINAR CANCHA ---");
 
         int id = vista.pedirId();
-        
+
         boolean exito = modeloDAO.eliminarCancha(id);
 
         if (exito) {

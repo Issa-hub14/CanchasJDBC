@@ -23,6 +23,6 @@ public class CanchasJDBC {
 
         ControladorCancha controlador = new ControladorCancha(vista, dao);
 
-        controlador.registrarNuevaCancha();
+        controlador.iniciar();
     }
 }

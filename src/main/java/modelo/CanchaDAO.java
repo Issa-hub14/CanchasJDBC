@@ -23,7 +23,7 @@ public class CanchaDAO {
             pstmt.setInt(3, cancha.getCapacidad());
 
             int filasAfectadas = pstmt.executeUpdate();
-            return filasAfectadas > 0; // Retorna true si se guardó
+            return filasAfectadas > 0;
 
         } catch (SQLException e) {
             System.out.println("Error en la BD: " + e.getMessage());
@@ -31,7 +31,7 @@ public class CanchaDAO {
         }
     }
     public boolean editarCancha(int id, Cancha cancha) {
-        String sql = "UPDATE canchas SET (nombre, deporte, capacidad) WHERE id=?";
+        String sql = "UPDATE canchas SET nombre=?, deporte=?, capacidad=? WHERE id=?";
 
         try (Connection conn = ConexionDB.conectar(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
